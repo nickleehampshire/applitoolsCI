@@ -3,3 +3,4 @@ node_js:
   - "8"
 script:
   - export APPLITOOLS_BATCH_ID=`echo ${TRAVIS_PULL_REQUEST_SHA:=$TRAVIS_COMMIT}`
+  - npm run test
