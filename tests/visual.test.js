@@ -27,6 +27,8 @@ async function UITest(){
                 eyes = new Eyes();
                 eyes.setApiKey('97V99100FHlLIXPKUlm1QXBtoIf105aXatTGXW4oJCxrE8qEk110');
                 await eyes.open(driver, "Jest,Travis,React", "initial test" ); //driver, app name, test name
+                await driver.get("file:///Users/nicklee/Documents/nickleehampshire/applitoolsCI/build/index.html")      
+
 
             } catch(err){
                 // fail entire test?
@@ -47,6 +49,10 @@ async function UITest(){
             const isItTheSame = result.MatchResult._asExpected;
             expect(isItTheSame).toBeTruthy();
     
+        })
+
+        it("should fail", () => {
+            expect(false).toBeTruthy()
         })
     })
 }
