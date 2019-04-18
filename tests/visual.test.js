@@ -51,9 +51,7 @@ async function UITest(){
     
         })
 
-        it("should fail", () => {
-            expect(false).toBeTruthy()
-        })
+      
     })
 }
 
