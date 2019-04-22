@@ -5,6 +5,7 @@ require('dotenv').config()
 require("chromedriver");
 const { By } = require("selenium-webdriver");
 const webdriver = require("selenium-webdriver");
+const chrome = require("selenium-webdriver/chrome");
 const { Eyes, Target, ConsoleLogHandler } = require("@applitools/eyes-selenium");
 
 jest.setTimeout(20000)
@@ -24,8 +25,13 @@ async function UITest(){
 
         beforeAll( async () => {
             try {
+
+                const chrome_options  = new chrome.Options()
+                chrome_options.add_argument('--headless')
+                chrome_options.add_argument('--no-sandbox')
+                chrome_options.add_argument('--disable-dev-shm-usage')
                 driver = new webdriver.Builder()
-                    .withCapabilities(webdriver.Capabilities.chrome())
+                    .withCapabilities(webdriver.Capabilities.chrome(chrome_options))
                     .build()
                 eyes = new Eyes();
                 const apiKey = process.env.APPLITOOLS_API_KEY;
@@ -60,6 +66,6 @@ async function UITest(){
     })
 }
 
-//UITest()
+UITest()
 
 console.log(process.env.APPLITOOLS_API_KEY)
