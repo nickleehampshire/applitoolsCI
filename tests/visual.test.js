@@ -27,9 +27,9 @@ async function UITest(){
             try {
 
                 const chrome_options  = new chrome.Options()
-                chrome_options.add_argument('--headless')
-                chrome_options.add_argument('--no-sandbox')
-                chrome_options.add_argument('--disable-dev-shm-usage')
+                chrome_options.addArguments('--headless')
+                chrome_options.addArguments('--no-sandbox')
+                chrome_options.addArguments('--disable-dev-shm-usage')
                 driver = new webdriver.Builder()
                     .withCapabilities(webdriver.Capabilities.chrome(chrome_options))
                     .build()
