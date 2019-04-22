@@ -1,4 +1,7 @@
 
+require('dotenv').config()
+
+
 require("chromedriver");
 const { By } = require("selenium-webdriver");
 const webdriver = require("selenium-webdriver");
@@ -25,7 +28,9 @@ async function UITest(){
                     .withCapabilities(webdriver.Capabilities.chrome())
                     .build()
                 eyes = new Eyes();
-                eyes.setApiKey('97V99100FHlLIXPKUlm1QXBtoIf105aXatTGXW4oJCxrE8qEk110');
+                const apiKey = process.env.APPLITOOLS_API_KEY;
+
+                eyes.setApiKey(apiKey);
                 await eyes.open(driver, "Jest,Travis,React", "initial test" ); //driver, app name, test name
                 await driver.get("file:///Users/nicklee/Documents/nickleehampshire/applitoolsCI/build/index.html")      
 
@@ -56,3 +61,5 @@ async function UITest(){
 }
 
 //UITest()
+
+console.log(process.env.APPLITOOLS_API_KEY)
