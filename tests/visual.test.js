@@ -27,9 +27,17 @@ async function UITest(){
                 driver = new webdriver.Builder()
                     .withCapabilities(webdriver.Capabilities.chrome())
                     .build()
+                    
                 eyes = new Eyes();
-                const apiKey = process.env.APPLITOOLS_API_KEY;
 
+                // obtain the batch name and ID from the environment variables
+                const batchName =  process.env.APPLITOOLS_BATCH_NAME;
+                const batchId   = process.env.APPLITOOLS_BATCH_ID;
+
+                //  set the batch
+                eyes.setBatch(batchName,batchId,0); 
+
+                const apiKey = process.env.APPLITOOLS_API_KEY;
                 eyes.setApiKey(apiKey);
                 await eyes.open(driver, "Jest,Travis,React", "initial test" ); //driver, app name, test name
                 await driver.get("file:///Users/nicklee/Documents/nickleehampshire/applitoolsCI/build/index.html")      
