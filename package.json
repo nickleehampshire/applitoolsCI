@@ -1,7 +1,7 @@
 {
   "name": "applitoolsci",
   "jest": {
-    "testEnvironment" : "node",
+    "testEnvironment": "node",
     "verbose": false,
     "transform": {
       "^.+\\.js$": "babel-jest"
@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/nickleehampshire/applitoolsCI#readme",
   "dependencies": {
+    "dotenv": "^7.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "styled-components": "^4.2.0"
