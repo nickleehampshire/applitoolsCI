@@ -31,7 +31,7 @@ async function UITest(){
                 chrome_options.addArguments('--no-sandbox')
                 chrome_options.addArguments('--disable-dev-shm-usage')
                 driver = new webdriver.Builder()
-                    .withCapabilities(webdriver.Capabilities.chrome(chrome_options))
+                    .withCapabilities(webdriver.Capabilities.chrome())
                     .build()
                 eyes = new Eyes();
                 const apiKey = process.env.APPLITOOLS_API_KEY;
