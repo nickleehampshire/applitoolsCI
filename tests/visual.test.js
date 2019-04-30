@@ -25,12 +25,13 @@ async function UITest(){
         beforeAll( async () => {
             try {
 
-                // const chrome_options  = new chrome.Options()
-                // chrome_options.addArguments('--headless')
-                // chrome_options.addArguments('--no-sandbox')
+                const chrome_options  = new chrome.Options()
+                chrome_options.addArguments('--headless')
+                chrome_options.addArguments('--no-sandbox')
                 // chrome_options.addArguments('--disable-dev-shm-usage')
                 driver = new webdriver.Builder()
                     .withCapabilities(webdriver.Capabilities.chrome())
+                    .setChromeOptions(chrome_options)
                     .build()
                 eyesInstance = new Eyes();
                 const apiKey = process.env.APPLITOOLS_API_KEY;
