@@ -1,10 +1,10 @@
 
 require('dotenv').config()
 
-
 require("chromedriver");
 const { By } = require("selenium-webdriver");
 const webdriver = require("selenium-webdriver");
+const chrome = require("selenium-webdriver/chrome");
 const { Eyes, Target, ConsoleLogHandler } = require("@applitools/eyes-selenium");
 
 jest.setTimeout(20000)
@@ -20,26 +20,23 @@ test('multiplies 2 * 2 to equal 4', () => {
 async function UITest(){
     describe("Application should", () => {
         let driver;
-        let eyes;
+        let eyesInstance;
 
         beforeAll( async () => {
             try {
+
+                // const chrome_options  = new chrome.Options()
+                // chrome_options.addArguments('--headless')
+                // chrome_options.addArguments('--no-sandbox')
+                // chrome_options.addArguments('--disable-dev-shm-usage')
                 driver = new webdriver.Builder()
                     .withCapabilities(webdriver.Capabilities.chrome())
                     .build()
-                    
-                eyes = new Eyes();
-
-                // obtain the batch name and ID from the environment variables
-                const batchName =  process.env.APPLITOOLS_BATCH_NAME;
-                const batchId   = process.env.APPLITOOLS_BATCH_ID;
-
-                //  set the batch
-                eyes.setBatch(batchName,batchId,0); 
-
+                eyesInstance = new Eyes();
                 const apiKey = process.env.APPLITOOLS_API_KEY;
-                eyes.setApiKey(apiKey);
-                await eyes.open(driver, "Jest,Travis,React", "initial test" ); //driver, app name, test name
+
+                eyesInstance.setApiKey(apiKey);
+                await eyesInstance.open(driver, "Jest,Travis,React", "initial test" ); //driver, app name, test name
                 await driver.get("file:///Users/nicklee/Documents/nickleehampshire/applitoolsCI/build/index.html")      
 
 
@@ -50,24 +47,25 @@ async function UITest(){
         })
 
         afterAll( async() => {
-            await eyes.close(false);
+            await eyesInstance.close(false);
             await driver.quit();
-            await eyes.abortIfNotClosed();
+            //await eyesInstance.abortIfNotClosed();
 
         })
 
         it("look the same", async () => {
-            const result = await eyes.checkWindow("first check").then(function(result){console.log('data:',result); return result});
-    
-            const isItTheSame = result.MatchResult._asExpected;
-            expect(isItTheSame).toBeTruthy();
-    
+            const result = await eyesInstance.checkWindow("first check").then(function(result){console.log('data:',result); return result});  //returns { _asExpected: false, _windowId: undefined }
+            expect(result._asExpected).toBe(true);
         })
 
+        it("should be last test", () => {
+            var val = true;
+            expect(val).toBe(true)
+        })
       
     })
 }
 
-//UITest()
+UITest()
 
 console.log(process.env.APPLITOOLS_API_KEY)
