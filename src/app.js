@@ -27,7 +27,6 @@ export default class App extends React.Component {
                 <button onClick={this.buttonHandler} id='uniqueButton'> display text </button>
                 {this.state.showtext ? <h2>Second Heading</h2> : ''}
             </div>
-
         )
     }
 }

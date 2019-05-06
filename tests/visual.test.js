@@ -22,11 +22,11 @@ async function UITest(){
 
         beforeAll( async () => {
             try {
-
-                const chrome_options  = new chrome.Options()   //runnign as headless will run different applitools test
+                const chrome_options  = new chrome.Options()
                 chrome_options.addArguments('--headless')
                 chrome_options.addArguments('--no-sandbox')
-                chrome_options.addArguments('--disable-dev-shm-usage')
+                // chrome_options.addArguments('--disable-dev-shm-usage')
+
                 driver = new webdriver.Builder()
                     .withCapabilities(webdriver.Capabilities.chrome())
                     .setChromeOptions(chrome_options)
@@ -38,11 +38,11 @@ async function UITest(){
 
                 eyesInstance.setApiKey(apiKey);
 
-                eyesInstance.setBatch(null, );
+
+                eyesInstance.setBatch(null, batchID );
                 await eyesInstance.open(driver, "Jest,Travis,React", "React App with button (testname)" ); //driver, app name, test name
                 await driver.get("http://localhost:9000/")
                 //await driver.get("file:///Users/nicklee/Documents/nickleehampshire/applitoolsCI/build/index.html")      
-
 
             } catch(err){
                 // fail entire test?
@@ -55,16 +55,20 @@ async function UITest(){
             await driver.quit();
             await eyesInstance.abortIfNotClosed();
 
+
         })
 
         it("look the same", async () => {
             const result = await eyesInstance.checkWindow("first check").then(function(result){console.log('data:',result); return result});
-    
             const isItTheSame = result._asExpected;
             expect(isItTheSame).toBeTruthy();
-    
+
         })
 
+        it("should be last test", () => {
+            var val = true;
+            expect(val).toBe(true)
+        })
       
     })
 }
