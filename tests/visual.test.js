@@ -44,9 +44,8 @@ async function UITest(){
                 await driver.get("http://localhost:9000/")
                 //await driver.get("file:///Users/nicklee/Documents/nickleehampshire/applitoolsCI/build/index.html")      
 
-
             } catch(err){
-                // fail entire test?
+                // fail whole test?
                 console.error(err);
             }
         })
@@ -54,7 +53,6 @@ async function UITest(){
         afterAll( async() => {
             await eyesInstance.close(false);
             await driver.quit();
-
             await eyesInstance.abortIfNotClosed();
         })
 
