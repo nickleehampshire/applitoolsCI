@@ -15,8 +15,7 @@ steps:
     versionSpec: '8.x'
   displayName: 'Install Node.js'
 - task: chromium-task@0
-  inputs:
-    unpackFolder: '$(System.DefaultWorkingDirectory)' 
+  
 - task: applitools.applitools-integration.applitools-build-task.applitools_build_task@0
   displayName: 'Applitools Build Task'
 
