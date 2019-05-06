@@ -39,7 +39,7 @@ async function UITest(){
                 const batchID = process.env.APPLITOOLS_BATCH_ID;
 
                 eyesInstance.setApiKey(apiKey);
-                eyesInstance.setBatch(null, );
+                eyesInstance.setBatch(batchName, batchID);
                 await eyesInstance.open(driver, "Jest,Travis,React", "React App with button (testname)" ); //driver, app name, test name
                 await driver.get("http://localhost:9000/")
                 //await driver.get("file:///Users/nicklee/Documents/nickleehampshire/applitoolsCI/build/index.html")      
@@ -75,5 +75,5 @@ async function UITest(){
 }
 
 UITest()
-
+console.log(process.env.APPLITOOLS_BATCH_ID)
 console.log(process.env.APPLITOOLS_API_KEY)
