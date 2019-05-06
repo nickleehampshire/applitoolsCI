@@ -22,7 +22,6 @@ export default class App extends React.Component {
 
     render(){
         return (
-
             <div>
                 <h1>Heading One</h1>
                 <button onClick={this.buttonHandler} id='uniqueButton'> display text </button>
