@@ -1,6 +1,5 @@
 require('dotenv').config()
 require("chromedriver");
-const config = require('config-yml');
 
 const { By } = require("selenium-webdriver");
 const webdriver = require("selenium-webdriver");
@@ -80,6 +79,6 @@ async function UITest(){
 }
 
 UITest()
-console.log('id:', config.variables.APPLITOOLS_BATCH_ID)
+console.log('id:', process.env.APPLITOOLS_BATCH_ID)
 console.log(process.env.APPLITOOLS_API_KEY)
-console.log(process.env.myVar)
+console.log('myvar',process.env.myVar)
