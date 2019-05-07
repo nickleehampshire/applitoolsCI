@@ -18,7 +18,7 @@ steps:
 
 - script: |
     npm install
-    - export APPLITOOLS_BATCH_ID = `echo $(Build.SourceBranchName)` 
+    - export APPLITOOLS_BATCH_ID = `echo $(Build.SourceVersion)` 
     npm run start &
     npm run test
 
