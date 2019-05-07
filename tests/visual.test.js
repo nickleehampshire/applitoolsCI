@@ -1,5 +1,7 @@
 require('dotenv').config()
 require("chromedriver");
+const config = require('config-yml');
+
 const { By } = require("selenium-webdriver");
 const webdriver = require("selenium-webdriver");
 const chrome = require("selenium-webdriver/chrome");
@@ -36,7 +38,7 @@ async function UITest(){
                 eyesInstance = new Eyes();
                 const apiKey = process.env.APPLITOOLS_API_KEY;
                 const batchName = null;
-                const batchID = process.env.APPLITOOLS_BATCH_ID;
+                const batchID = config.variables.APPLITOOLS_BATCH_ID;
 
                 eyesInstance.setApiKey(apiKey);
                 eyesInstance.setBatch(batchName,batchID);
@@ -78,6 +80,6 @@ async function UITest(){
 }
 
 UITest()
-console.log(process.env.APPLITOOLS_BATCH_ID)
+console.log('id:', config.variables.APPLITOOLS_BATCH_ID)
 console.log(process.env.APPLITOOLS_API_KEY)
 console.log(process.env.myVar)
