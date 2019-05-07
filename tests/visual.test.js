@@ -59,9 +59,7 @@ async function UITest(){
         })
 
         it("look the same", async () => {
-
             const result = await eyesInstance.checkWindow("first check").then(function(result){console.log('data:',result); return result});
-    
             const isItTheSame = result._asExpected;
             expect(isItTheSame).toBeTruthy();
             })
@@ -82,4 +80,4 @@ async function UITest(){
 UITest()
 console.log(process.env.APPLITOOLS_BATCH_ID)
 console.log(process.env.APPLITOOLS_API_KEY)
-
+console.log(process.env.myVar)

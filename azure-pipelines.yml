@@ -9,6 +9,7 @@ pool:
   vmImage: 'Ubuntu-16.04'
 variables:
   APPLITOOLS_BATCH_ID : $(Build.SourceVersion)
+  myVar: nick
 steps:
 - task: NodeTool@0
   inputs:
