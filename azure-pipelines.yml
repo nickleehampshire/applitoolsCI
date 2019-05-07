@@ -20,8 +20,6 @@ steps:
 
 - script: |
     npm install
-    process.env['APPLITOOLS_BATCH_ID']  = $(Build.SourceVersion)
-    process.env['myVar']  = 'nick' 
     npm run start &
     npm run test
 
