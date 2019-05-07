@@ -7,9 +7,7 @@ trigger:
 
 pool:
   vmImage: 'Ubuntu-16.04'
-variables:
-  APPLITOOLS_BATCH_ID : $(Build.SourceVersion)
-  myVar: nick
+
 steps:
 - task: NodeTool@0
   inputs:
@@ -20,6 +18,8 @@ steps:
 
 - script: |
     npm install
+    - process.env['APPLITOOLS_BATCH_ID']  = `echo $(Build.SourceVersion)`
+    - process.env['myVar']  = 'nick' 
     npm run start &
     npm run test
 
