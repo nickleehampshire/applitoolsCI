@@ -27,7 +27,7 @@ async function UITest(){
                 const chrome_options  = new chrome.Options()
                 chrome_options.addArguments('--headless')
                 chrome_options.addArguments('--no-sandbox')
-                // chrome_options.addArguments('--disable-dev-shm-usage')
+                //chrome_options.addArguments('--disable-dev-shm-usage')
 
                 driver = new webdriver.Builder()
                     .withCapabilities(webdriver.Capabilities.chrome())
@@ -39,10 +39,10 @@ async function UITest(){
                 const batchID = process.env.APPLITOOLS_BATCH_ID;
 
                 eyesInstance.setApiKey(apiKey);
-                eyesInstance.setBatch(batchID, batchID);
-                await eyesInstance.open(driver, "Jest,Travis,React", "React App with button (testname)" ); //driver, app name, test name
-                await driver.get("http://localhost:9000/")
-                //await driver.get("file:///Users/nicklee/Documents/nickleehampshire/applitoolsCI/build/index.html")      
+                eyesInstance.setBatch(batchName,batchID);
+                await eyesInstance.open(driver, "Jest,Travis,React", "Front Page Check " ); //driver, app name, test name
+               await driver.get("http://localhost:9000/")
+               // await driver.get("file:///Users/nicklee/Documents/nickleehampshire/applitoolsCI/build/index.html")      
 
             } catch(err){
                 // fail whole test?
@@ -51,6 +51,8 @@ async function UITest(){
         })
 
         afterAll( async() => {
+
+            console.log('batch info: ', eyesInstance.getBatch())
             await eyesInstance.close(false);
             await driver.quit();
             await eyesInstance.abortIfNotClosed();
@@ -64,6 +66,12 @@ async function UITest(){
             expect(isItTheSame).toBeTruthy();
             })
 
+        it("should display second heading", async () => {
+            const displayTextButton = await driver.findElement(By.xpath('//*[@id="uniqueButton"]'))
+            await displayTextButton.click()
+            await eyesInstance.checkWindow("display button checked").then(result => console.log('check result', result))
+            expect(true).toBe(true)
+        })
         it("should be last test", () => {
             var val = true;
             expect(val).toBe(true)
@@ -75,3 +83,4 @@ async function UITest(){
 UITest()
 console.log(process.env.APPLITOOLS_BATCH_ID)
 console.log(process.env.APPLITOOLS_API_KEY)
+
