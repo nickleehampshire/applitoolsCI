@@ -14,7 +14,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "APPLITOOLS_BATCH_ID=$(Build.SourceVersion) myVar=nick jest",
     "build": "webpack",
     "start": "webpack-dev-server --env development"
   },
