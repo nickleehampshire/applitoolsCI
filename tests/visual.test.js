@@ -1,6 +1,6 @@
 require('dotenv').config()
 require("chromedriver");
-// const config = require('config-yml');
+const config = require('config-yml');
 
 const { By } = require("selenium-webdriver");
 const webdriver = require("selenium-webdriver");
