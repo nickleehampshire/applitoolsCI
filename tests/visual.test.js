@@ -76,7 +76,6 @@ async function UITest(){
             var val = true;
             expect(val).toBe(true)
         })
-      
     })
 }
 
