@@ -15,6 +15,9 @@ steps:
   displayName: 'Install Node.js'  
 - task: applitools.applitools-integration.applitools-build-task.applitools_build_task@0
   displayName: 'Applitools Build Task'
+  env: 
+    BATCH_ID: $(Build.SourceVersion)
+    myVar: nick
 
 - script: |
     npm install
