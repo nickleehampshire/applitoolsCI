@@ -81,5 +81,4 @@ async function UITest(){
 UITest()
 console.log('id:', process.env.APPLITOOLS_BATCH_ID)
 console.log(process.env.APPLITOOLS_API_KEY)
-console.log('myvar',process.env.myVar)
 console.log('process.env.build_buildversion: ', process.env.build_buildversion)
