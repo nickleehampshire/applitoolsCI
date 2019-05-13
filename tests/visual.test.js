@@ -8,14 +8,6 @@ const { Eyes, Target, ConsoleLogHandler } = require("@applitools/eyes-selenium")
 
 jest.setTimeout(40000)
 
-function multiply(a,b){
-    return a*b;
-}
-
-test('multiplies 2 * 2 to equal 4', () => {
-    expect(multiply(2,2)).toBe(4)
-})
-
 async function UITest(){
     describe("Application should", () => {
         let driver;
